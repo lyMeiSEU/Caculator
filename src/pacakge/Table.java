@@ -1,6 +1,8 @@
 package pacakge;
 
-import javax.swing.*;
+import javax.swing.JEditorPane;
+import javax.swing.JPanel;
+import javax.swing.JTable;
 
 /**
  * Created by lh on 2017/3/5.
