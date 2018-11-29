@@ -9,9 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-/**
- * Created by lh on 2017/3/5.
- */
 public class GUI {
     private JPanel jPane;
     private JButton ButtonReset;
