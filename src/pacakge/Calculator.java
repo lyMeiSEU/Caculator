@@ -39,6 +39,8 @@ public class Calculator extends JFrame {
 		min.addActionListener(listener);
 		JButton plu = new JButton("*");
 		plu.addActionListener(listener);
+		JButton pow = new JButton("^");
+		pow.addActionListener(listener);
 		JButton div = new JButton("/");
 		div.addActionListener(listener);
 		JButton cle = new JButton("C");
@@ -47,6 +49,7 @@ public class Calculator extends JFrame {
 		panel.add(add);
 		panel.add(min);
 		panel.add(plu);
+		panel.add(pow);
 		panel.add(div);
 		panel.add(cle);
 		panel.add(cel);
@@ -67,7 +70,7 @@ public class Calculator extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				string = textField.getText();
-				String regex = "[^+-/*/]";
+				String regex = "[^+-/*^/]";
 				String c = string.replaceAll(regex, "");// 找到运算符
 				int index = string.indexOf(c);
 
@@ -117,12 +120,12 @@ public class Calculator extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				string = textField.getText();
-				if (!string.matches("[0-9]+[+-/*/][0-9]+")) {// 检查是否为正确的表达式
+				if (!string.matches("[0-9]+[+-/*^/][0-9]+")) {// 检查是否为正确的表达式
 					textField.setText("error");
 					flag = true;
 					return;
 				}
-				String regex = "[^+-/*/]";
+				String regex = "[^+-/*^/]";
 				String c = string.replaceAll(regex, "");// 找到运算符
 				int index = string.indexOf(c);
 				number1 = Double.parseDouble(string.substring(0, index));
@@ -145,6 +148,14 @@ public class Calculator extends JFrame {
 						return;
 					}
 					result = number1 / number2;
+					break;
+				case '^':
+					double N=number2-1;
+					result=number1;
+					while(N>0) {
+						result*=number1;
+						N--;
+					}
 					break;
 				default:
 					break;
